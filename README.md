@@ -2,7 +2,11 @@
 James D. Stallard 2022
 Sample connection code for Mosquitto to Azure IOT Hub using MQTT/TLS
 
-Adapted from: https://techcommunity.microsoft.com/t5/internet-of-things-blog/mosquitto-client-tools-and-azure-iot-hub-the-beginning-of/ba-p/2824717 which cites: https://github.com/Azure-Samples/IoTMQTTSample/tree/master/src/Mosquitto_pub
+Adapted from:
+https://techcommunity.microsoft.com/t5/internet-of-things-blog/mosquitto-client-tools-and-azure-iot-hub-the-beginning-of/ba-p/2824717
+
+Which cites:
+https://github.com/Azure-Samples/IoTMQTTSample/tree/master/src/Mosquitto_pub
 
 This was done with Windows 10, but everything should work just the same with *nix
 
@@ -16,7 +20,7 @@ Download the Root CA cert: https://raw.githubusercontent.com/Azure/azure-iot-sdk
 # Optional
 Install Cygwin so you can verify your downloaded certs on Windows: https://www.cygwin.com/
 
-# Certs:
+# Certs
 You will need one or other of the "Baltimore CyberTrust Root" or "DigiCert Global Root G2" certs. This is because Microsoft are changing over their Root CA and from around Feb2023 the Baltimore cert will no longer work.
 
 
