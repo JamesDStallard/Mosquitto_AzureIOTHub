@@ -1,0 +1,45 @@
+# Start here, this sets up your Azure Infrastructure
+
+# These commands can be pasted into the AZ CLI
+# https://docs.microsoft.com/en-us/cli/azure/
+# I did this entirely using the Cloud Shell in the Azure Portal
+
+# Pick a location for your Resource Group
+#
+# uksouth works for me
+az account list-locations --output table
+
+# Create the Resource Group
+# https://docs.microsoft.com/en-us/cli/azure/manage-azure-groups-azure-cli
+# Choose your Resource Group name
+#
+az group create --name IOTTraining --location uksouth
+
+# Create the Azure IOT Hub
+# https://docs.microsoft.com/en-us/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create
+# Defaults to
+#	s1 SKU
+# Choose your Azure IOT Hub name
+#
+az iot hub create --resource-group IOTTraining --name JDS-IOTHub-Training --sku F1 --partition-count 2
+
+# Create the IOT Device
+# Defaults to
+#	enabled status
+# https://docs.microsoft.com/en-us/cli/azure/iot/hub/device-identity?view=azure-cli-latest#az-iot-hub-device-identity-create
+# Choose your IOT Device Name
+#
+az iot hub device-identity create --hub-name JDS-IOTHub-Training --device-id JDS-Mosquitto-IOT-Device -resource-group IOTTraining --status enabled
+
+# Create the Shared Access Signature Token
+# Doing this from the GUI seems to result in a SAS token that doesn't work
+# Defaults to
+#	primary key type
+#	3600s validity
+# https://docs.microsoft.com/en-us/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-generate-sas-token
+#
+az iot hub generate-sas-token --device-id JDS-Mosquitto-IOT-Device --hub-name JDS-IOTHub-Training --resource-group IOTTraining --key-type primary --duration 3600
+
+# Monitor messages
+#
+az iot hub monitor-events --hub-name JDS-IOTHub-Training
