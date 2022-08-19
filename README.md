@@ -29,3 +29,16 @@ Use these commands to verify the cert (Cygwin or *nix CLI):
 openssl x509 -in DigiCert.pem -text
 openssl x509 -in Baltimore.pem -text
 
+# Steps
+1. Setup your Azure environment: AzureCLICommands.txt
+2. Download your certificate, refer Certs or use the files here
+3. Verify your certficate, refer Certs
+4. Install Mosquitto
+5. Run the monitor command in the AZ CLI Cloud Shell from AzureCLICommands.txt
+6. Modify the command in Mosquitto_pub to replace the SAS Token, names and devices I used with those you chose in step 1, and the path to the binaries and the certificate
+7. If it worked, then you will see a message in the AZ CLI monitor
+
+The Shared Access Signature Token will expire (default is 1hr) so although not a suitable long term method of authentication is fine for this demo
+
+
+
