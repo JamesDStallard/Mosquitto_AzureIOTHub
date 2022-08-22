@@ -24,7 +24,7 @@ Install Cygwin so you can verify your downloaded certs on Windows: https://www.c
 You will need one or other of the "Baltimore CyberTrust Root" or "DigiCert Global Root G2" certs. This is because Microsoft are changing over their Root CA and from around Feb2023 the Baltimore cert will no longer work.
 
 
-When you copy the cert, remember to strip out the unwanted characters: " \r \n. You may need a text editor capable of viewing the data in binary format. I used SapienPrimal Script, but I believe Notepad++ can also do it. If you fail to do this, the cert will be invalid.
+When you copy the cert, remember to strip out the unwanted characters: " \r \n. You may need a text editor capable of viewing the data in binary format. I used Sapien PrimalScript, but I believe Notepad++ can also do it. If you fail to do this, the cert will be invalid.
 Use these commands to verify the cert (Cygwin or *nix CLI):
 openssl x509 -in DigiCert.pem -text
 openssl x509 -in Baltimore.pem -text
